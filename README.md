@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# WC 2022 Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Generates a sweepstakes 
 
 ## Available Scripts
 
