@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wc-game/static/css/main.073c9b0a.css",
+    "main.js": "/wc-game/static/js/main.b24c69b3.js",
+    "static/js/787.7b01b6cb.chunk.js": "/wc-game/static/js/787.7b01b6cb.chunk.js",
+    "static/media/logo.svg": "/wc-game/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/wc-game/index.html",
+    "main.073c9b0a.css.map": "/wc-game/static/css/main.073c9b0a.css.map",
+    "main.b24c69b3.js.map": "/wc-game/static/js/main.b24c69b3.js.map",
+    "787.7b01b6cb.chunk.js.map": "/wc-game/static/js/787.7b01b6cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.b24c69b3.js"
+  ]
+}
