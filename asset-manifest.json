@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/wc-game/static/css/main.073c9b0a.css",
-    "main.js": "/wc-game/static/js/main.b5fe9e4b.js",
+    "main.css": "/wc-game/static/css/main.39d60357.css",
+    "main.js": "/wc-game/static/js/main.30585eac.js",
     "static/js/787.7b01b6cb.chunk.js": "/wc-game/static/js/787.7b01b6cb.chunk.js",
     "index.html": "/wc-game/index.html",
-    "main.073c9b0a.css.map": "/wc-game/static/css/main.073c9b0a.css.map",
-    "main.b5fe9e4b.js.map": "/wc-game/static/js/main.b5fe9e4b.js.map",
+    "main.39d60357.css.map": "/wc-game/static/css/main.39d60357.css.map",
+    "main.30585eac.js.map": "/wc-game/static/js/main.30585eac.js.map",
     "787.7b01b6cb.chunk.js.map": "/wc-game/static/js/787.7b01b6cb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.b5fe9e4b.js"
+    "static/css/main.39d60357.css",
+    "static/js/main.30585eac.js"
   ]
 }
