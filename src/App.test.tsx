@@ -5,5 +5,5 @@ import App from './App'
 test('renders learn react link', () => {
     render(<App />)
     const helloWorld = screen.getByTestId('hello-world')
-    expect(helloWorld).toHaveTextContent('fail')
+    expect(helloWorld).toHaveTextContent('Hello world!')
 })
