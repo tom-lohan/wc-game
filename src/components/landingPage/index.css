@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Bungee+Shade&display=swap');
+.landingPage {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Bungee Shade', cursive;
+}
+
+.landingPage > .title {
+    font-size: 7.5vw;
+    width: 80%;
+}
+
+button {
+    font-family: 'Bungee Inline', cursive !important;
+}
