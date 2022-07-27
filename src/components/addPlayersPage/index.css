@@ -1,0 +1,14 @@
+.addPlayersPage {
+    font-family: 'Bungee Inline', cursive !important;
+}
+
+.addPlayersPage > .col {
+    height: 100vh;
+    width: 50%;
+}
+
+.addPlayersPage > .right_col {
+}
+
+.addPlayersPage > .right_col > .playerCard {
+}
