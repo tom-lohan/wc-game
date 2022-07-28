@@ -1,10 +1,15 @@
-import { HighlightOff } from '@mui/icons-material'
+import ClearIcon from '@mui/icons-material/Clear'
 import { Button, Empty, Input } from 'antd'
 import { FC, useState } from 'react'
-import { Player } from '../../types/player'
+import { Player, PageType } from '../../types'
 import './index.css'
 
-export const AddPlayersPage: FC = () => {
+type AddPlayersPageProps = {
+    setSelectedPage: any
+}
+
+export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
+    const { setSelectedPage } = props
     const [players, setPlayers] = useState<Player[]>([])
     const [inputVal, setInputVal] = useState('')
 
@@ -24,58 +29,94 @@ export const AddPlayersPage: FC = () => {
     return (
         <>
             <main className="addPlayersPage flex">
-                <div className="col left_col p-10">
-                    <h2 className="text-3xl">Add Players</h2>
-                    <p>
-                        Get started by adding the names of the people you want
-                        to include in the draw
-                    </p>
-                    <div className="mt-5">
-                        <Input
-                            size="large"
-                            placeholder="name"
-                            onChange={(event) =>
-                                setInputVal(event.target.value)
+                <div className="col left_col flex p-5 flex-col justify-between">
+                    <div className="flex">
+                        <Button
+                            onClick={() =>
+                                setSelectedPage(PageType.LANDING_PAGE)
                             }
-                            value={inputVal}
-                            status={isInvalid ? 'error' : ''}
-                            onKeyDown={(event) => {
-                                if (
-                                    event.key === 'Enter' &&
-                                    inputVal.length > 2
-                                ) {
-                                    event.preventDefault()
-                                    addPlayer()
+                        >
+                            Back
+                        </Button>
+                    </div>
+                    <div>
+                        <h2 className="text-3xl">Add Players</h2>
+                        <p>
+                            Get started by adding the names of the people you
+                            want to include in the draw
+                        </p>
+                        <p>You can add between 3 and 32 players</p>
+                        <div className="mt-5">
+                            <Input
+                                size="large"
+                                placeholder="name"
+                                onChange={(event) =>
+                                    setInputVal(event.target.value)
                                 }
-                            }}
-                            suffix={
-                                <Button
-                                    size="large"
-                                    disabled={isInvalid || inputVal.length < 3}
-                                    onClick={addPlayer}
-                                >
-                                    Add
-                                </Button>
+                                value={inputVal}
+                                status={isInvalid ? 'error' : ''}
+                                disabled={players.length > 31}
+                                onKeyDown={(event) => {
+                                    if (
+                                        event.key === 'Enter' &&
+                                        inputVal.length > 2 &&
+                                        !isInvalid
+                                    ) {
+                                        event.preventDefault()
+                                        addPlayer()
+                                    }
+                                }}
+                                suffix={
+                                    <Button
+                                        size="large"
+                                        disabled={
+                                            isInvalid ||
+                                            inputVal.length < 3 ||
+                                            players.length > 31
+                                        }
+                                        onClick={addPlayer}
+                                    >
+                                        Add
+                                    </Button>
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div className="flex justify-center w-full">
+                        <Button
+                            size="large"
+                            onClick={() =>
+                                setSelectedPage(PageType.MAKE_DRAW_PAGE)
                             }
-                        />
+                            disabled={players.length < 3}
+                        >
+                            Next
+                        </Button>
                     </div>
                 </div>
-                <div className="col right_col p-5 flex justify-center items-center">
-                    <div className="playersList">
-                        {players.map((player, index) => (
-                            <div
-                                className="playerCard flex items-center gap-3"
-                                key={index}
-                            >
-                                <p className="text-xl m-0">{player.name}</p>
-                                <Button
-                                    size="small"
-                                    shape="circle"
-                                    onClick={() => removePlayer(player)}
-                                    icon={<HighlightOff />}
-                                />
-                            </div>
-                        ))}
+                <div className="col right_col">
+                    <div className="teamSheet ">
+                        <h2 className="text-white text-5xl pt-10">
+                            WC2022 Teamsheet
+                        </h2>
+                        <div className="playerList flex flex-col gap-3 items-center flex-wrap">
+                            {players.map((player, index) => (
+                                <div
+                                    className="playerCard flex items-center gap-3"
+                                    key={index}
+                                >
+                                    <p className="playerName text-xl m-0 truncate">
+                                        {index + 1}. {player.name}
+                                    </p>
+                                    <Button
+                                        size="small"
+                                        shape="circle"
+                                        onClick={() => removePlayer(player)}
+                                        icon={<ClearIcon />}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     {!players.length && (
                         <Empty description="No players added yet" />

@@ -8,7 +8,19 @@
 }
 
 .addPlayersPage > .right_col {
+    background-color: black;
+    color: white;
 }
 
-.addPlayersPage > .right_col > .playerCard {
+.addPlayersPage > .right_col > .teamSheet > h2 {
+    color: white;
+    text-align: center;
+}
+
+.addPlayersPage > .right_col .playerList {
+    max-height: 82vh;
+}
+
+.playerCard > .playerName {
+    max-width: 275px;
 }
