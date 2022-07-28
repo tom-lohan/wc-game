@@ -1,10 +1,16 @@
 # WC 2022 Game
 
+Generates a sweepstakes for the 2022 World Cup
+
+[Click to open](https://tom-lohan.github.io/wc-game)
+
+
+
                       _,aaadP""""""Ybaaaa,,_
-                   ,adP,__,,,aaaadP"""""Y888888a,_
-                ,a8888888P"''             "Y8888888b,
-             _a888888888"                   `Y88888888b,
-           ,d888888888P'                       "888888888b,
+                   ,adP,__,,,aaaad P"""""Y888888a,_
+                ,a8888888P"''             "Y 8888888b,
+             _a888888888"                   `Y888888888b,
+           ,d888888888P'                       "8888888888b,
          ,88888888P"Y8,                       ,P'   `""Y888b,
        ,d8888P"'     "Ya,                    ,P'         `Ya`b,
       ,P88"'           `Ya,                 ,P'            `b`Yi
@@ -35,9 +41,7 @@ Y,88888888b, ,adP"'             ""Y888888P"                  888888'
                          ``"""""""""""""''
 
 
-Generates a sweepstakes 
 
-[Click to open](https://tom-lohan.github.io/wc-game)
 
 ## Available Scripts
 
