@@ -17,6 +17,7 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                 >
                     Back
                 </Button>
+                <h1>hi</h1>
             </main>
         </>
     )
