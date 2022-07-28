@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
 import './App.css'
-import { AddPlayersPage, LandingPage } from './components'
+import { AddPlayersPage, DrawPage, LandingPage } from './components'
 import 'antd/dist/antd.min.css'
-
-export enum PageType {
-    LANDING_PAGE = 'landing_page',
-    ADD_PLAYERS_PAGE = 'add_players_page',
-}
+import { useState } from 'react'
+import { PageType } from './types'
 
 function App() {
     const [selectedPage, setSelectedPage] = useState<PageType>(
@@ -16,13 +12,14 @@ function App() {
     return (
         <div className="App">
             {selectedPage === PageType.LANDING_PAGE && (
-                <LandingPage
-                    clickHandler={() =>
-                        setSelectedPage(PageType.ADD_PLAYERS_PAGE)
-                    }
-                />
+                <LandingPage setSelectedPage={setSelectedPage} />
             )}
-            {selectedPage === PageType.ADD_PLAYERS_PAGE && <AddPlayersPage />}
+            {selectedPage === PageType.ADD_PLAYERS_PAGE && (
+                <AddPlayersPage setSelectedPage={setSelectedPage} />
+            )}
+            {selectedPage === PageType.MAKE_DRAW_PAGE && (
+                <DrawPage setSelectedPage={setSelectedPage} />
+            )}
         </div>
     )
 }
