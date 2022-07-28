@@ -4,8 +4,8 @@ Generates a sweepstakes for the 2022 World Cup
 
 [Click to open](https://tom-lohan.github.io/wc-game)
 
+<!-- language: lang-none -->                                                                                        
                                                                                         
-`                                                                                        
            .---.  ,----..                ,----,     ,----..        ,----,      ,----,   
           /. ./| /   /   \             .'   .' \   /   /   \     .'   .' \   .'   .' \  
       .--'.  ' ;|   :     :          ,----,'    | /   .     :  ,----,'    |,----,'    | 
@@ -20,7 +20,7 @@ Generates a sweepstakes for the 2022 World Cup
      \   \ ;     \   \ .'          ;   | .'        \   \ .'  ;   | .'    ;   | .'       
       '---"       `---`            `---'            `---`    `---'       `---'          
                                                                                         
-`
+
 
 
 
