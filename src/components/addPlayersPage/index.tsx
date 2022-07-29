@@ -94,6 +94,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                     <div className="flex justify-center w-full">
                         <Button
                             size="large"
+                            data-testid="nextPageBtn"
                             onClick={() =>
                                 setSelectedPage(PageType.MAKE_DRAW_PAGE)
                             }

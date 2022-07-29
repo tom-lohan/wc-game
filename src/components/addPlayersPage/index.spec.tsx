@@ -60,4 +60,45 @@ describe('AddPlayerPage', () => {
             '1. John2. Mark'
         )
     })
+
+    it('should disable add player btn if value matches an already added name', () => {
+        modifiedStore = {
+            wcgame: {
+                ...WCGInitialState,
+                players: [{ name: 'John' }, { name: 'Mary' }, { name: 'Mark' }],
+            },
+        }
+        renderComponentTestFunction(
+            <AddPlayersPage setSelectedPage={mockedSetSelectedPage} />,
+            modifiedStore
+        )
+
+        const inputField = screen.getByTestId('playerNameInput')
+        fireEvent.change(inputField, { target: { value: 'John' } })
+
+        expect(screen.getByTestId('addPlayerBtn')).toBeDisabled()
+    })
+
+    it('next page btn should enable/disable correctly', () => {
+        modifiedStore = {
+            wcgame: {
+                ...WCGInitialState,
+                players: [{ name: 'John' }, { name: 'Mary' }],
+            },
+        }
+        renderComponentTestFunction(
+            <AddPlayersPage setSelectedPage={mockedSetSelectedPage} />,
+            modifiedStore
+        )
+
+        expect(screen.getByTestId('nextPageBtn')).toBeDisabled()
+
+        const inputField = screen.getByTestId('playerNameInput')
+        fireEvent.change(inputField, { target: { value: 'Tom' } })
+
+        const addPlayerBtn = screen.getByTestId('addPlayerBtn')
+        fireEvent.click(addPlayerBtn)
+
+        expect(screen.getByTestId('nextPageBtn')).toBeEnabled()
+    })
 })
