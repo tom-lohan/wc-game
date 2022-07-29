@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { Player } from "./types";
+import { Country, Player } from "./types";
+import { countries } from './data/counties';
 
 export interface WCGState {
-	players: Player[]
+	players: Player[],
+	countries: Country[]
 }
 
 export const WCGInitialState: WCGState = {
-	players: []
+	players: [],
+	countries: countries
 }
 
 export const WCGSlice = createSlice({
@@ -31,6 +34,8 @@ export const WCGSlice = createSlice({
 
 
 export const selectCurrentPlayers = (state: RootState) => state.wcgame.players;
+export const selectCurrentCountries = (state: RootState) => state.wcgame.countries;
+export const selectRankedCountries = (state: RootState) => [...state.wcgame.countries].sort((cA, cB) => cA.ranking < cB.ranking ? -1 : 1);
 
 export const { addPlayer, removePlayerByName } = WCGSlice.actions;
 

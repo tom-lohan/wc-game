@@ -1,0 +1,11 @@
+.drawPage {
+    font-family: 'Bungee Inline', cursive !important;
+}
+
+.players {
+    width: 30%;
+}
+
+.countries {
+    width: 70%;
+}
