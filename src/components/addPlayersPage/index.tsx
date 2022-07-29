@@ -1,7 +1,13 @@
 import ClearIcon from '@mui/icons-material/Clear'
 import { Button, Empty, Input } from 'antd'
 import { FC, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Player, PageType } from '../../types'
+import {
+    removePlayerByName,
+    selectCurrentPlayers,
+    addPlayer,
+} from '../../wcgSlice'
 import './index.css'
 
 type AddPlayersPageProps = {
@@ -10,16 +16,17 @@ type AddPlayersPageProps = {
 
 export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
     const { setSelectedPage } = props
-    const [players, setPlayers] = useState<Player[]>([])
+    const dispatch = useDispatch()
+    const players = useSelector(selectCurrentPlayers)
     const [inputVal, setInputVal] = useState('')
 
-    const addPlayer = () => {
-        setPlayers([...players, { name: inputVal.trim() }])
+    const submitPlayer = () => {
+        dispatch(addPlayer({ name: inputVal.trim() }))
         setInputVal('')
     }
 
     const removePlayer = (player: Player) => {
-        setPlayers(players.filter((p) => player.name !== p.name))
+        dispatch(removePlayerByName(player.name))
     }
 
     const isInvalid = players.some(
@@ -50,6 +57,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                             <Input
                                 size="large"
                                 placeholder="name"
+                                data-testid="playerNameInput"
                                 onChange={(event) =>
                                     setInputVal(event.target.value)
                                 }
@@ -63,18 +71,19 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                         !isInvalid
                                     ) {
                                         event.preventDefault()
-                                        addPlayer()
+                                        submitPlayer()
                                     }
                                 }}
                                 suffix={
                                     <Button
                                         size="large"
+                                        data-testid="addPlayerBtn"
                                         disabled={
                                             isInvalid ||
                                             inputVal.length < 3 ||
                                             players.length > 31
                                         }
-                                        onClick={addPlayer}
+                                        onClick={submitPlayer}
                                     >
                                         Add
                                     </Button>
@@ -85,6 +94,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                     <div className="flex justify-center w-full">
                         <Button
                             size="large"
+                            data-testid="nextPageBtn"
                             onClick={() =>
                                 setSelectedPage(PageType.MAKE_DRAW_PAGE)
                             }
@@ -99,7 +109,10 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                         <h2 className="text-white text-5xl pt-10">
                             WC2022 Teamsheet
                         </h2>
-                        <div className="playerList flex flex-col gap-3 items-center flex-wrap">
+                        <div
+                            data-testid="playerList"
+                            className="playerList flex flex-col gap-3 items-center flex-wrap"
+                        >
                             {players.map((player, index) => (
                                 <div
                                     className="playerCard flex items-center gap-3"
@@ -111,6 +124,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                     <Button
                                         size="small"
                                         shape="circle"
+                                        data-testid={`removePlayerBtn_${index}`}
                                         onClick={() => removePlayer(player)}
                                         icon={<ClearIcon />}
                                     />
