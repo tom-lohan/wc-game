@@ -40,6 +40,7 @@ exports[`AddPlayerPage should render correctly 1`] = `
           >
             <input
               class="ant-input ant-input-lg"
+              data-testid="playerNameInput"
               placeholder="name"
               type="text"
               value=""
@@ -49,6 +50,7 @@ exports[`AddPlayerPage should render correctly 1`] = `
             >
               <button
                 class="ant-btn ant-btn-default ant-btn-lg"
+                data-testid="addPlayerBtn"
                 disabled=""
                 type="button"
               >
@@ -87,6 +89,7 @@ exports[`AddPlayerPage should render correctly 1`] = `
         </h2>
         <div
           class="playerList flex flex-col gap-3 items-center flex-wrap"
+          data-testid="playerList"
         />
       </div>
       <div

@@ -57,6 +57,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                             <Input
                                 size="large"
                                 placeholder="name"
+                                data-testid="playerNameInput"
                                 onChange={(event) =>
                                     setInputVal(event.target.value)
                                 }
@@ -76,6 +77,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                 suffix={
                                     <Button
                                         size="large"
+                                        data-testid="addPlayerBtn"
                                         disabled={
                                             isInvalid ||
                                             inputVal.length < 3 ||
@@ -106,7 +108,10 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                         <h2 className="text-white text-5xl pt-10">
                             WC2022 Teamsheet
                         </h2>
-                        <div className="playerList flex flex-col gap-3 items-center flex-wrap">
+                        <div
+                            data-testid="playerList"
+                            className="playerList flex flex-col gap-3 items-center flex-wrap"
+                        >
                             {players.map((player, index) => (
                                 <div
                                     className="playerCard flex items-center gap-3"
@@ -118,6 +123,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                     <Button
                                         size="small"
                                         shape="circle"
+                                        data-testid={`removePlayerBtn_${index}`}
                                         onClick={() => removePlayer(player)}
                                         icon={<ClearIcon />}
                                     />
