@@ -6,13 +6,13 @@ export interface WCGState {
 	players: Player[]
 }
 
-const initialState: WCGState = {
+export const WCGInitialState: WCGState = {
 	players: []
 }
 
 export const WCGSlice = createSlice({
 	name: 'wcgame',
-	initialState,
+	initialState: WCGInitialState,
 	reducers: {
 		addPlayer: (state, action: PayloadAction<Player>) => {
 			return {

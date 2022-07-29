@@ -28,10 +28,10 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
     const removePlayer = (player: Player) => {
         dispatch(removePlayerByName(player.name))
     }
-    console.log('players', players)
-    const isInvalid =
-        players &&
-        players.some((player: Player) => player.name.trim() === inputVal.trim())
+
+    const isInvalid = players.some(
+        (player: Player) => player.name.trim() === inputVal.trim()
+    )
 
     return (
         <>

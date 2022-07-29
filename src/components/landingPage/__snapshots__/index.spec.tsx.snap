@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage should render correctly 1`] = `
+<div>
+  <main
+    class="landingPage flex flex-col justify-center items-center"
+    data-testid="landing_page"
+  >
+    <h1
+      class="title px-5"
+    >
+      World Cup 2022 Sweepstakes
+    </h1>
+    <button
+      class="ant-btn ant-btn-default ant-btn-lg"
+      type="button"
+    >
+      <span>
+        Get started
+      </span>
+    </button>
+  </main>
+</div>
+`;
