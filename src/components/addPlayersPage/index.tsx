@@ -1,7 +1,13 @@
 import ClearIcon from '@mui/icons-material/Clear'
 import { Button, Empty, Input } from 'antd'
 import { FC, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Player, PageType } from '../../types'
+import {
+    removePlayerByName,
+    selectCurrentPlayers,
+    addPlayer,
+} from '../../wcgSlice'
 import './index.css'
 
 type AddPlayersPageProps = {
@@ -10,21 +16,22 @@ type AddPlayersPageProps = {
 
 export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
     const { setSelectedPage } = props
-    const [players, setPlayers] = useState<Player[]>([])
+    const dispatch = useDispatch()
+    const players = useSelector(selectCurrentPlayers)
     const [inputVal, setInputVal] = useState('')
 
-    const addPlayer = () => {
-        setPlayers([...players, { name: inputVal.trim() }])
+    const submitPlayer = () => {
+        dispatch(addPlayer({ name: inputVal.trim() }))
         setInputVal('')
     }
 
     const removePlayer = (player: Player) => {
-        setPlayers(players.filter((p) => player.name !== p.name))
+        dispatch(removePlayerByName(player.name))
     }
-
-    const isInvalid = players.some(
-        (player: Player) => player.name.trim() === inputVal.trim()
-    )
+    console.log('players', players)
+    const isInvalid =
+        players &&
+        players.some((player: Player) => player.name.trim() === inputVal.trim())
 
     return (
         <>
@@ -63,7 +70,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                         !isInvalid
                                     ) {
                                         event.preventDefault()
-                                        addPlayer()
+                                        submitPlayer()
                                     }
                                 }}
                                 suffix={
@@ -74,7 +81,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                             inputVal.length < 3 ||
                                             players.length > 31
                                         }
-                                        onClick={addPlayer}
+                                        onClick={submitPlayer}
                                     >
                                         Add
                                     </Button>
