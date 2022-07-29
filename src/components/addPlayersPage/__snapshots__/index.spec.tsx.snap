@@ -30,7 +30,9 @@ exports[`AddPlayerPage should render correctly 1`] = `
           Get started by adding the names of the people you want to include in the draw
         </p>
         <p>
-          You can add between 3 and 32 players
+          You can add between 
+          3
+           and 32 players
         </p>
         <div
           class="mt-5"

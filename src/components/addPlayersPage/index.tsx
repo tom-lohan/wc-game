@@ -14,6 +14,8 @@ type AddPlayersPageProps = {
     setSelectedPage: any
 }
 
+const MIN_PLAYER_COUNT = 3
+
 export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
     const { setSelectedPage } = props
     const dispatch = useDispatch()
@@ -52,7 +54,10 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                             Get started by adding the names of the people you
                             want to include in the draw
                         </p>
-                        <p>You can add between 3 and 32 players</p>
+                        <p>
+                            You can add between {MIN_PLAYER_COUNT} and 32
+                            players
+                        </p>
                         <div className="mt-5">
                             <Input
                                 size="large"
@@ -67,7 +72,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                 onKeyDown={(event) => {
                                     if (
                                         event.key === 'Enter' &&
-                                        inputVal.length > 2 &&
+                                        inputVal.trim().length > 2 &&
                                         !isInvalid
                                     ) {
                                         event.preventDefault()
@@ -80,7 +85,8 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                         data-testid="addPlayerBtn"
                                         disabled={
                                             isInvalid ||
-                                            inputVal.length < 3 ||
+                                            inputVal.length <
+                                                MIN_PLAYER_COUNT ||
                                             players.length > 31
                                         }
                                         onClick={submitPlayer}
