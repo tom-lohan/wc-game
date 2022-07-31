@@ -1,5 +1,5 @@
 import './App.css'
-import { AddPlayersPage, DrawPage, LandingPage } from './components'
+import { AddPlayersPage, DrawPage, LandingPage } from './containers'
 import 'antd/dist/antd.min.css'
 import { useState } from 'react'
 import { PageType } from './types'
