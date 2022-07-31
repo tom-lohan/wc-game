@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import '@testing-library/jest-dom'
 import { WCGInitialState } from '../wcgSlice'
 import gameReducer from '../wcgSlice'
+import { DragDropContext } from 'react-beautiful-dnd'
 
 export const renderComponentTestFunction = (
     children: ReactNode,
@@ -25,5 +26,11 @@ export const renderComponentTestFunction = (
             getDefaultMiddleware({ serializableCheck: false }),
     })
 
-    return render(<Provider store={mockedStore}>{children}</Provider>)
+    return render(
+        <Provider store={mockedStore}>
+            <DragDropContext onDragEnd={(result) => {}}>
+                {children}
+            </DragDropContext>
+        </Provider>
+    )
 }

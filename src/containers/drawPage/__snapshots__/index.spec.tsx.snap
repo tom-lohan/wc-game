@@ -76,7 +76,7 @@ exports[`DrawPage should render correctly 1`] = `
           </div>
           <div
             class="droppable countryList flex gap-4 flex-wrap "
-            data-rbd-droppable-context-id="0"
+            data-rbd-droppable-context-id="1"
             data-rbd-droppable-id="includedCountries"
           >
             <div
@@ -91,7 +91,7 @@ exports[`DrawPage should render correctly 1`] = `
           </h4>
           <div
             class="droppable countryList flex gap-4 flex-wrap "
-            data-rbd-droppable-context-id="0"
+            data-rbd-droppable-context-id="1"
             data-rbd-droppable-id="excludedCountries"
           >
             <div

@@ -53,7 +53,13 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                 setExcludedCountries(rankedCountries.slice(players.length))
             )
         }
-    }, [])
+    }, [
+        dispatch,
+        excludedCountries.length,
+        includedCountries.length,
+        players,
+        rankedCountries,
+    ])
 
     const onDragEnd = (result: DropResult) => {
         if (!result.destination) {
