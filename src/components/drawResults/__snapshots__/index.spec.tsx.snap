@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountryList should render correctly 1`] = `
+<div>
+  <h1
+    class="text-3xl text-center"
+  >
+    World Cup 2022
+  </h1>
+  <div
+    class="flex flex-wrap justify-center"
+  >
+    <div
+      class="w-1/3 print:w-1/3"
+    >
+      <div
+        class="bordered border-2 m-2 py-3 text-center"
+      >
+        <h1
+          class="text-lg"
+        >
+          Joe
+        </h1>
+        <p
+          class="m-0 text-3xl"
+        >
+          🤠
+        </p>
+        <p
+          class="m-0"
+        >
+          Imaginaria
+        </p>
+      </div>
+    </div>
+    <div
+      class="w-1/3 print:w-1/3"
+    >
+      <div
+        class="bordered border-2 m-2 py-3 text-center"
+      >
+        <h1
+          class="text-lg"
+        >
+          Mary
+        </h1>
+        <p
+          class="m-0 text-3xl"
+        >
+          🥸
+        </p>
+        <p
+          class="m-0"
+        >
+          MadeUpLand
+        </p>
+      </div>
+    </div>
+    <div
+      class="w-1/3 print:w-1/3"
+    >
+      <div
+        class="bordered border-2 m-2 py-3 text-center"
+      >
+        <h1
+          class="text-lg"
+        >
+          Tom
+        </h1>
+        <p
+          class="m-0 text-3xl"
+        >
+          😎
+        </p>
+        <p
+          class="m-0"
+        >
+          Fakeland
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex items-center justify-center mt-5 print:hidden"
+  >
+    <button
+      class="ant-btn ant-btn-default ant-btn-lg"
+      type="button"
+    >
+      <span>
+        Re-draw
+      </span>
+    </button>
+  </div>
+</div>
+`;

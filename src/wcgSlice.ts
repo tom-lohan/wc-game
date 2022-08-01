@@ -33,6 +33,12 @@ export const WCGSlice = createSlice({
 				players: state.players.filter(player => player.name !== action.payload)
 			}
 		},
+		setPlayers: (state, action: PayloadAction<Player[]>) => {
+			return {
+				...state,
+				players: action.payload
+			}
+		},
 		setIncludedCountries: (state, action: PayloadAction<Country[]>) => {
 			return {
 				...state,
@@ -55,6 +61,6 @@ export const selectRankedCountries = (state: RootState) => [...state.wcgame.coun
 export const selectIncludedCountries = (state: RootState) => state.wcgame.includedCountries;
 export const selectExcludedCountries = (state: RootState) => state.wcgame.excludedCountries;
 
-export const { addPlayer, removePlayerByName, setExcludedCountries, setIncludedCountries } = WCGSlice.actions;
+export const { addPlayer, removePlayerByName, setPlayers, setExcludedCountries, setIncludedCountries } = WCGSlice.actions;
 
 export default WCGSlice.reducer;

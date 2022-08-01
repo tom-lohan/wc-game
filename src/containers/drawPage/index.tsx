@@ -1,7 +1,7 @@
 import { Button } from 'antd'
 import { FC, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { PageType } from '../../types'
+import { PageType, Player } from '../../types'
 import {
     selectCurrentPlayers,
     selectExcludedCountries,
@@ -9,6 +9,7 @@ import {
     selectRankedCountries,
     setExcludedCountries,
     setIncludedCountries,
+    setPlayers,
 } from '../../wcgSlice'
 import './index.css'
 import {
@@ -19,7 +20,7 @@ import {
 } from 'react-beautiful-dnd'
 import { countries } from '../../data/counties'
 import { useDispatch } from 'react-redux'
-import { CountryList } from '../../components'
+import { CountryList, DrawResults } from '../../components'
 
 type DrawPageProps = {
     setSelectedPage: any
@@ -38,6 +39,8 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
         useState<boolean>(false)
     const [isDraggingFromIncluded, setIsDraggingFromIncluded] =
         useState<boolean>(false)
+
+    const [hasExecutedDraw, setHasExecutedDraw] = useState<boolean>(false)
 
     useEffect(() => {
         if (
@@ -65,6 +68,8 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
         if (!result.destination) {
             return
         }
+        setIsDraggingFromExcluded(false)
+        setIsDraggingFromIncluded(false)
 
         const isIncludedCountry = includedCountries.some(
             (country) => country.id === result.draggableId
@@ -98,8 +103,6 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                 )
             )
         }
-        setIsDraggingFromExcluded(false)
-        setIsDraggingFromIncluded(false)
     }
 
     const onDragStart = (initial: DragStart, provided: ResponderProvided) => {
@@ -125,86 +128,135 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
         return ''
     }
 
+    const executeDraw = () => {
+        let shuffledPlayers: Player[] = [...players].sort(
+            () => Math.random() - 0.5
+        )
+
+        console.log('sp', shuffledPlayers)
+        const shuffledCountries = [...includedCountries].sort(
+            () => Math.random() - 0.5
+        )
+        console.log('sc', shuffledCountries)
+
+        shuffledPlayers = shuffledPlayers.map(
+            (player: Player, index: number) => {
+                return {
+                    ...player,
+                    country: shuffledCountries[index],
+                }
+            }
+        )
+
+        console.log(shuffledPlayers)
+
+        dispatch(setPlayers(shuffledPlayers))
+
+        setHasExecutedDraw(true)
+    }
+
     return (
         <>
             <main className="drawPage flex flex-col p-5">
-                <div className="flex gap-7 items-center">
-                    <Button
-                        onClick={() =>
-                            setSelectedPage(PageType.ADD_PLAYERS_PAGE)
-                        }
-                    >
-                        Back
-                    </Button>
-                </div>
-                <div className="flex gap-7 mt-5">
-                    <div className="players ">
-                        <h2 className="text-3xl">Players</h2>
-                        <div className="playerList flex gap-4 flex-wrap">
-                            {players.map((player, index) => (
-                                <div
-                                    className="playerCard flex items-center justify-center border-2 border-black p-3"
-                                    key={index}
-                                >
-                                    <p className="m-0">{player.name}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="countries">
-                        <div className="flex gap-3 items-baseline">
-                            <h2 className="text-3xl">Countries</h2>
-                            <span>
-                                Ordered using{' '}
-                                <a
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    href="https://www.theguardian.com/football/2022/jun/15/world-cup-2022-power-rankings-final-32-qatar"
-                                >
-                                    the Guardian's power rankings.
-                                </a>{' '}
-                                <span className="pl-2"> Drag to re-order</span>
-                            </span>
-                        </div>
-                        <div className="countryLists flex flex-col gap-4">
-                            <DragDropContext
-                                onDragStart={onDragStart}
-                                onDragEnd={onDragEnd}
+                {!hasExecutedDraw && (
+                    <>
+                        <div className="flex gap-7 items-center">
+                            <Button
+                                onClick={() =>
+                                    setSelectedPage(PageType.ADD_PLAYERS_PAGE)
+                                }
                             >
-                                <div className="flex gap-2">
-                                    <h4>Included in the draw </h4>
-                                    <span className="text-red">
-                                        {getDrawValidationMsg()}
+                                Back
+                            </Button>
+                        </div>
+                        <div className="flex gap-7 mt-5">
+                            <div className="players ">
+                                <h2 className="text-3xl">Players</h2>
+                                <div className="playerList flex gap-4 flex-wrap">
+                                    {[...players]
+                                        .sort((pA, pB) =>
+                                            pA.name < pB.name ? -1 : 1
+                                        )
+                                        .map((player, index) => (
+                                            <div
+                                                className="playerCard flex items-center justify-center border-2 border-black p-3"
+                                                key={index}
+                                            >
+                                                <p className="m-0">
+                                                    {player.name}
+                                                </p>
+                                            </div>
+                                        ))}
+                                </div>
+                            </div>
+                            <div className="countries">
+                                <div className="flex gap-3 items-baseline">
+                                    <h2 className="text-3xl">Countries</h2>
+                                    <span>
+                                        Ordered using{' '}
+                                        <a
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            href="https://www.theguardian.com/football/2022/jun/15/world-cup-2022-power-rankings-final-32-qatar"
+                                        >
+                                            the Guardian's power rankings.
+                                        </a>{' '}
+                                        <span className="pl-2">
+                                            {' '}
+                                            Drag to re-order
+                                        </span>
                                     </span>
                                 </div>
-                                <CountryList
-                                    countries={includedCountries}
-                                    isDraggingFromOtherList={
-                                        isDraggingFromExcluded
-                                    }
-                                    droppableId="includedCountries"
-                                />
-                                <div className="h-2 w-full bg-gray-dark"></div>
-                                <h4>Excluded from the draw</h4>
-                                <CountryList
-                                    countries={excludedCountries}
-                                    isDraggingFromOtherList={
-                                        isDraggingFromIncluded
-                                    }
-                                    droppableId="excludedCountries"
-                                />
-                            </DragDropContext>
+                                <div className="countryLists flex flex-col gap-4">
+                                    <DragDropContext
+                                        onDragStart={onDragStart}
+                                        onDragEnd={onDragEnd}
+                                    >
+                                        <div className="flex gap-2">
+                                            <h4>Included in the draw </h4>
+                                            <span className="text-red">
+                                                {getDrawValidationMsg()}
+                                            </span>
+                                        </div>
+                                        <CountryList
+                                            countries={includedCountries}
+                                            isDraggingFromOtherList={
+                                                isDraggingFromExcluded
+                                            }
+                                            droppableId="includedCountries"
+                                        />
+                                        <div className="h-2 w-full bg-gray-dark"></div>
+                                        <h4>Excluded from the draw</h4>
+                                        <CountryList
+                                            countries={excludedCountries}
+                                            isDraggingFromOtherList={
+                                                isDraggingFromIncluded
+                                            }
+                                            droppableId="excludedCountries"
+                                        />
+                                    </DragDropContext>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="flex items-end justify-center h-full">
-                    <Button
-                        disabled={includedCountries.length !== players.length}
-                        size="large"
-                    >
-                        Draw!
-                    </Button>
-                </div>
+                        <div className="flex items-end justify-center h-full">
+                            <Button
+                                disabled={
+                                    includedCountries.length !== players.length
+                                }
+                                size="large"
+                                onClick={() => executeDraw()}
+                            >
+                                Draw!
+                            </Button>
+                        </div>
+                    </>
+                )}
+                {hasExecutedDraw && (
+                    <DrawResults
+                        players={players}
+                        redraw={() => setHasExecutedDraw(false)}
+                    />
+                )}
             </main>
         </>
     )

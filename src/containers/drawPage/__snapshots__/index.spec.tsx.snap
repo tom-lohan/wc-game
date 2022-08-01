@@ -57,7 +57,8 @@ exports[`DrawPage should render correctly 1`] = `
             <span
               class="pl-2"
             >
-               Drag to re-order
+               
+              Drag to re-order
             </span>
           </span>
         </div>
