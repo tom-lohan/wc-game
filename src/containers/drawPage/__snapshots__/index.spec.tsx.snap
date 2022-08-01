@@ -41,7 +41,7 @@ exports[`DrawPage should render correctly 1`] = `
           <h2
             class="text-3xl"
           >
-            Countries
+            Select Countries
           </h2>
           <span>
             Ordered using

@@ -132,12 +132,9 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
         let shuffledPlayers: Player[] = [...players].sort(
             () => Math.random() - 0.5
         )
-
-        console.log('sp', shuffledPlayers)
         const shuffledCountries = [...includedCountries].sort(
             () => Math.random() - 0.5
         )
-        console.log('sc', shuffledCountries)
 
         shuffledPlayers = shuffledPlayers.map(
             (player: Player, index: number) => {
@@ -147,11 +144,7 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                 }
             }
         )
-
-        console.log(shuffledPlayers)
-
         dispatch(setPlayers(shuffledPlayers))
-
         setHasExecutedDraw(true)
     }
 
@@ -175,7 +168,10 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                                 <div className="playerList flex gap-4 flex-wrap">
                                     {[...players]
                                         .sort((pA, pB) =>
-                                            pA.name < pB.name ? -1 : 1
+                                            pA.name.toLowerCase() <
+                                            pB.name.toLowerCase()
+                                                ? -1
+                                                : 1
                                         )
                                         .map((player, index) => (
                                             <div
@@ -191,7 +187,9 @@ export const DrawPage: FC<DrawPageProps> = (props) => {
                             </div>
                             <div className="countries">
                                 <div className="flex gap-3 items-baseline">
-                                    <h2 className="text-3xl">Countries</h2>
+                                    <h2 className="text-3xl">
+                                        Select Countries
+                                    </h2>
                                     <span>
                                         Ordered using{' '}
                                         <a

@@ -17,7 +17,7 @@ exports[`CountryList should render correctly 1`] = `
         class="bordered border-2 m-2 py-3 text-center"
       >
         <h1
-          class="text-lg"
+          class="text-lg truncate mx-2"
         >
           Joe
         </h1>
@@ -40,7 +40,7 @@ exports[`CountryList should render correctly 1`] = `
         class="bordered border-2 m-2 py-3 text-center"
       >
         <h1
-          class="text-lg"
+          class="text-lg truncate mx-2"
         >
           Mary
         </h1>
@@ -63,7 +63,7 @@ exports[`CountryList should render correctly 1`] = `
         class="bordered border-2 m-2 py-3 text-center"
       >
         <h1
-          class="text-lg"
+          class="text-lg truncate mx-2"
         >
           Tom
         </h1>

@@ -52,7 +52,9 @@ export const DrawResults: FC<DrawResultsProps> = (props) => {
                         key={index}
                     >
                         <div className="bordered border-2 m-2 py-3 text-center">
-                            <h1 className="text-lg">{player.name}</h1>
+                            <h1 className="text-lg truncate mx-2">
+                                {player.name}
+                            </h1>
                             <p className="m-0 text-3xl">
                                 {player.country?.emoji}
                             </p>
