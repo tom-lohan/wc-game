@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountryList should render correctly 1`] = `
+<div>
+  <div
+    class="droppable countryList flex gap-4 flex-wrap "
+    data-rbd-droppable-context-id="0"
+    data-rbd-droppable-id="mockedList1"
+  >
+    <div
+      class="flex gap-4 flex-wrap "
+    >
+      <div
+        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+        class="playerCard flex items-center justify-center border-2 bg-white border-black p-3"
+        data-rbd-drag-handle-context-id="0"
+        data-rbd-drag-handle-draggable-id="abc"
+        data-rbd-draggable-context-id="0"
+        data-rbd-draggable-id="abc"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="m-0 flex gap-2 justify-center items-center"
+        >
+          <span>
+            Fakeland
+          </span>
+          <span
+            class="text-xl"
+          >
+            😎
+          </span>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+        class="playerCard flex items-center justify-center border-2 bg-white border-black p-3"
+        data-rbd-drag-handle-context-id="0"
+        data-rbd-drag-handle-draggable-id="def"
+        data-rbd-draggable-context-id="0"
+        data-rbd-draggable-id="def"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="m-0 flex gap-2 justify-center items-center"
+        >
+          <span>
+            MadeUpLand
+          </span>
+          <span
+            class="text-xl"
+          >
+            🥸
+          </span>
+        </div>
+      </div>
+      <div
+        aria-describedby="rbd-hidden-text-0-hidden-text-0"
+        class="playerCard flex items-center justify-center border-2 bg-white border-black p-3"
+        data-rbd-drag-handle-context-id="0"
+        data-rbd-drag-handle-draggable-id="ghi"
+        data-rbd-draggable-context-id="0"
+        data-rbd-draggable-id="ghi"
+        draggable="false"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="m-0 flex gap-2 justify-center items-center"
+        >
+          <span>
+            Imaginaria
+          </span>
+          <span
+            class="text-xl"
+          >
+            🤠
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

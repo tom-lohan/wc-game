@@ -1,3 +1,2 @@
-export { LandingPage } from './landingPage';
-export { AddPlayersPage } from './addPlayersPage';
-export { DrawPage } from './drawPage'
+export { CountryList } from './countryList';
+export { DrawResults } from './drawResults';

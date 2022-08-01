@@ -3,4 +3,5 @@ export type Country = {
 	emoji: string,
 	group: string,
 	ranking: number,
+	id: string,
 }

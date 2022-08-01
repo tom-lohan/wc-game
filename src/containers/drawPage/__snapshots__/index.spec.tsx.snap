@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DrawPage should render correctly 1`] = `
+<div>
+  <main
+    class="drawPage flex flex-col p-5"
+  >
+    <div
+      class="flex gap-7 items-center"
+    >
+      <button
+        class="ant-btn ant-btn-default"
+        type="button"
+      >
+        <span>
+          Back
+        </span>
+      </button>
+    </div>
+    <div
+      class="flex gap-7 mt-5"
+    >
+      <div
+        class="players "
+      >
+        <h2
+          class="text-3xl"
+        >
+          Players
+        </h2>
+        <div
+          class="playerList flex gap-4 flex-wrap"
+        />
+      </div>
+      <div
+        class="countries"
+      >
+        <div
+          class="flex gap-3 items-baseline"
+        >
+          <h2
+            class="text-3xl"
+          >
+            Select Countries
+          </h2>
+          <span>
+            Ordered using
+             
+            <a
+              href="https://www.theguardian.com/football/2022/jun/15/world-cup-2022-power-rankings-final-32-qatar"
+              rel="noreferrer"
+              target="_blank"
+            >
+              the Guardian's power rankings.
+            </a>
+             
+            <span
+              class="pl-2"
+            >
+               
+              Drag to re-order
+            </span>
+          </span>
+        </div>
+        <div
+          class="countryLists flex flex-col gap-4"
+        >
+          <div
+            class="flex gap-2"
+          >
+            <h4>
+              Included in the draw 
+            </h4>
+            <span
+              class="text-red"
+            />
+          </div>
+          <div
+            class="droppable countryList flex gap-4 flex-wrap "
+            data-rbd-droppable-context-id="1"
+            data-rbd-droppable-id="includedCountries"
+          >
+            <div
+              class="flex gap-4 flex-wrap "
+            />
+          </div>
+          <div
+            class="h-2 w-full bg-gray-dark"
+          />
+          <h4>
+            Excluded from the draw
+          </h4>
+          <div
+            class="droppable countryList flex gap-4 flex-wrap "
+            data-rbd-droppable-context-id="1"
+            data-rbd-droppable-id="excludedCountries"
+          >
+            <div
+              class="flex gap-4 flex-wrap "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex items-end justify-center h-full"
+    >
+      <button
+        class="ant-btn ant-btn-default ant-btn-lg"
+        type="button"
+      >
+        <span>
+          Draw!
+        </span>
+      </button>
+    </div>
+  </main>
+</div>
+`;

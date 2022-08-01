@@ -1,0 +1,29 @@
+.drawPage {
+    font-family: 'Bungee Inline', cursive !important;
+    height: 100vh;
+}
+
+.players {
+    width: 30%;
+}
+
+.countries {
+    width: 70%;
+}
+
+.isTargetZone {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+    color: #fff;
+    top: auto;
+    height: 100%;
+    width: 100%;
+}
