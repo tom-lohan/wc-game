@@ -2,6 +2,7 @@ import ClearIcon from '@mui/icons-material/Clear'
 import { Button, Empty, Input } from 'antd'
 import { FC, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { demoNames } from '../../data'
 import { Player, PageType } from '../../types'
 import {
     removePlayerByName,
@@ -21,9 +22,18 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
     const dispatch = useDispatch()
     const players = useSelector(selectCurrentPlayers)
     const [inputVal, setInputVal] = useState('')
+    const [inputIsInvalid, setInputIsInvalid] = useState(false)
 
     const submitPlayer = () => {
-        dispatch(addPlayer({ name: inputVal.trim() }))
+        if (inputVal === 'demo') {
+            demoNames.forEach((name) => {
+                if (!checkIfInvalidInput(name)) {
+                    dispatch(addPlayer({ name }))
+                }
+            })
+        } else {
+            dispatch(addPlayer({ name: inputVal.trim() }))
+        }
         setInputVal('')
     }
 
@@ -31,9 +41,8 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
         dispatch(removePlayerByName(player.name))
     }
 
-    const isInvalid = players.some(
-        (player: Player) => player.name.trim() === inputVal.trim()
-    )
+    const checkIfInvalidInput = (input: string) =>
+        players.some((player: Player) => player.name.trim() === input.trim())
 
     return (
         <>
@@ -63,17 +72,22 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                 size="large"
                                 placeholder="name"
                                 data-testid="playerNameInput"
-                                onChange={(event) =>
-                                    setInputVal(event.target.value)
-                                }
+                                autoFocus
+                                onChange={(event) => {
+                                    const input = event.target.value
+                                    setInputIsInvalid(
+                                        checkIfInvalidInput(input)
+                                    )
+                                    setInputVal(input)
+                                }}
                                 value={inputVal}
-                                status={isInvalid ? 'error' : ''}
+                                status={inputIsInvalid ? 'error' : ''}
                                 disabled={players.length > 31}
                                 onKeyDown={(event) => {
                                     if (
                                         event.key === 'Enter' &&
                                         inputVal.trim().length > 2 &&
-                                        !isInvalid
+                                        !inputIsInvalid
                                     ) {
                                         event.preventDefault()
                                         submitPlayer()
@@ -84,7 +98,7 @@ export const AddPlayersPage: FC<AddPlayersPageProps> = (props) => {
                                         size="large"
                                         data-testid="addPlayerBtn"
                                         disabled={
-                                            isInvalid ||
+                                            inputIsInvalid ||
                                             inputVal.length <
                                                 MIN_PLAYER_COUNT ||
                                             players.length > 31

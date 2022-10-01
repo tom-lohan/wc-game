@@ -38,7 +38,7 @@ exports[`AddPlayerPage should render correctly 1`] = `
           class="mt-5"
         >
           <span
-            class="ant-input-affix-wrapper ant-input-affix-wrapper-lg"
+            class="ant-input-affix-wrapper ant-input-affix-wrapper-focused ant-input-affix-wrapper-lg"
           >
             <input
               class="ant-input ant-input-lg"

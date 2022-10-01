@@ -21,15 +21,16 @@ export const DrawResults: FC<DrawResultsProps> = (props) => {
     }, [players])
 
     const calOptimumWidth = () => {
-        if (players.length % 6 === 0) {
+        if (players.length >= 24 && players.length % 6 === 0) {
             return 'w-1/6'
-        } else if (players.length % 5 === 0) {
+        } else if (players.length >= 30 && players.length % 5 === 0) {
             return 'w-1/5'
         } else if (players.length % 4 === 0) {
             return 'w-1/4'
         } else if (players.length % 3 === 0) {
             return 'w-1/3'
         }
+        return players.length < 24 ? 'w-1/4' : 'w-1/6'
     }
 
     const calOptimumPrintWidth = () => {
