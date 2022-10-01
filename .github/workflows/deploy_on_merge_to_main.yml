@@ -13,5 +13,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
+                  Username: ${{secrets.USERNAME}}
+                  Password: ${{secrets.PASSWORD}}
             - run: npm ci
             - run: npm run deploy
