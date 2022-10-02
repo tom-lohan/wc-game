@@ -7,13 +7,13 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - name: Checkout
             - uses: actions/checkout@v3
-            - name: Deploy via Github pages
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-                  Username: ${{secrets.USERNAME}}
-                  Password: ${{secrets.PASSWORD}}
-            - run: npm ci
-            - run: npm run deploy
+
+            - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+            - run: npm ci && npm run build
+
+            - name: Deploy 🚀
+            - uses: JamesIves/github-pages-deploy-action@v4
+            - with:
+                  folder: build # The folder the action should deploy.
